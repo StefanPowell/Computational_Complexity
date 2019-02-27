@@ -1,5 +1,4 @@
 #lang racket
-(require "global.rkt")
 (require rackunit)
 (provide (all-defined-out))
 
@@ -9,7 +8,11 @@
 	;check if has accept state
 	;check if connections correct
 	'todo)
-		
+	
+;takes an argument and returns true if it is an initial state
+(define (is-initial-state x)
+	'todo)
+	
 ;takes an argument and returns true if it is an accept state
 (define (is-accept-state x) 
 	'todo)
@@ -30,45 +33,18 @@
 	)
 )
 
+;x takes a variable to represent that initial state
+;y takes a symbol used to connect the states
+;z takes a variable to represent another state to which it  
 
-(define (make-initial-state x)
+(define (create-initial-state x)
  (lambda (a b)
-	(lambda (c d)
-		(cons (car x) (list (list a b)(list c d) "i"))
-    )
+	(cons x (a b))
   )
 )
-
-(define (make-accept-state x)
- (lambda (a b)
-	(lambda (c d)
-		(cons (car x) (list (list a b)(list c d) "a"))
-    )
-  )
-)
-
-(define (connect-state state-from state-to symbol)
+	
+(define (create-accept-state)
 	'todo)
-
-
-(define (create-state c)
-	(list c "n"))
-	
-(define (is-state x)
-	(cond
-	[(and (symbol?(first x)) (string? (final-element x))) #t]
-	[else #f]
-	)
-)
-	
-;takes an argument and returns true if it is an initial state
-(define (is-initial-state x)
-	;if its first element is a variable
-	;if its last element 
-	;if those list only contain two elements
-	;later if the second element in each list is a state itself
-	'todo)
-	
 	
 (define (connect-dfa)
 	'todo)
